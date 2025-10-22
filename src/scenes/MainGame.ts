@@ -32,17 +32,16 @@ export default class MainGameScene extends Phaser.Scene {
     this._container.add(this._background)
 
     this._board = new Board(this, data.gameWidth/2, data.gameHeight/2 - 80)
-      .onFinish(() => {
+      .onFinish((isWin:boolean) => {
+        if(isWin) {
+          data.audioManager.win.play()
+          this._spineBoy.animationState.setAnimation(0, "jump")
+        } else {
+          this._spineBoy.animationState.setAnimation(0, "death")
+        }
+        this._spineBoy.animationState.addAnimation(0, 'walk', true, 0);
+
         this._controlPanel.finish()
-      })
-      .onWin(() => {
-        data.audioManager.win.play()
-        this._spineBoy.animationState.setAnimation(0, "jump")
-        this._spineBoy.animationState.addAnimation(0, 'walk', true, 0);
-      })
-      .onLoss(() => {
-        this._spineBoy.animationState.setAnimation(0, "death")
-        this._spineBoy.animationState.addAnimation(0, 'walk', true, 0);
       })
     this._container.add(this._board)
 

@@ -13,9 +13,7 @@ export default class Board extends Phaser.GameObjects.Container {
     private _isWin!: boolean;
 
 
-    private _onFinish!: () => void;
-    private _onWin!: () => void;
-    private _onLoss!: () => void;
+    private _onFinish!: (isWin: boolean) => void;
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
         super(scene, x, y);
@@ -45,12 +43,7 @@ export default class Board extends Phaser.GameObjects.Container {
 
             if(i === data.reelsAmount - 1) {
                 this._reels[i].onFinish(() => {
-                    if(this._isWin) {
-                        this._onWin()
-                    } else {
-                        this._onLoss()
-                    }
-                    this._onFinish()
+                    this._onFinish(this._isWin)
                 })
             }
         }
@@ -91,18 +84,10 @@ export default class Board extends Phaser.GameObjects.Container {
         });
     }
 
-    public onFinish(callback: () => void) {
-        this._onFinish = callback
-        return this;
-    }
-
-    public onWin(callback: () => void) {
-        this._onWin = callback
-        return this;
-    }
-
-    public onLoss(callback: () => void) {
-        this._onLoss = callback
+    public onFinish(callback: (isWin:boolean) => void) {
+        this._onFinish = (isWin: boolean) => {
+            callback(isWin)
+        }
         return this;
     }
 }
