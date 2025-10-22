@@ -1,0 +1,47 @@
+export default class Button extends Phaser.GameObjects.Image {
+    private _scene: Phaser.Scene;
+    private _frames: {
+        defaultFrame: string;
+        disableFrame?: string;
+    }
+
+    constructor(scene: Phaser.Scene, x: number, y: number, frames: {defaultFrame: string, disableFrame?: string}) {
+        super(scene, x, y, frames.defaultFrame)
+
+        this._scene = scene;
+        this._frames = frames
+
+        this.setInteractive()
+    }
+
+    public onClick(callback: Function): Button {
+        this.on('pointerdown', (callback));
+
+        return this;
+    }
+
+    public disable(): void {
+        this.disableInteractive();
+        if (!this._frames.disableFrame) {
+            this.setTint(0x808080)
+        } else {
+            this.setTexture(this._frames.disableFrame);
+        }
+    }
+
+    public enable(): void {
+        this.setInteractive();
+        if (!this._frames.disableFrame) {
+            this.clearTint()
+        } else {
+            this.setTexture(this._frames.defaultFrame);
+        }
+    }
+    public disableInteractions(): void {
+        this.disableInteractive()
+    }
+    public enableInteractions(): void {
+        this.setInteractive()
+    }
+
+}

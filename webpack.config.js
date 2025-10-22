@@ -18,7 +18,7 @@ module.exports = {
     },
   },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true
   },
@@ -45,7 +45,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: 'public/index.html' }),
     new CopyPlugin({
-      patterns: [{ from: 'assets', to: 'assets' }]
+      patterns: [{ from: 'src/assets', to: 'assets' }]
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),

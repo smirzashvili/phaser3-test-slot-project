@@ -3,15 +3,16 @@ import Preload from './scenes/Preload';
 import Loading from './scenes/Loading';
 import MainGame from './scenes/MainGame';
 // import { SpinePlugin } from '@esotericsoftware/phaser-spine-plugin';
+import data from './data/gameData';
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.WEBGL,
   parent: 'game',
-  width: 800,
-  height: 600,
-  scale: {
-    mode: Phaser.Scale.FIT,
-  },
+  width: data.gameWidth,
+  height: data.gameHeight,
+  // scale: {
+  //   mode: Phaser.Scale.FIT,
+  // },
   antialiasGL: false,
   physics: {
     default: 'none',
