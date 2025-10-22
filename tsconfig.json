@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "noResolve": false,
+    "strict": true,
+    "esModuleInterop": true,
+    "allowJs": false,
+    "sourceMap": true,
+    "preserveConstEnums": true,
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+  },
+  "include": ["src/**/*"],
+  "compileOnSave": true
+}
