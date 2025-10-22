@@ -2,8 +2,8 @@ import Phaser from 'phaser';
 import Preload from './scenes/Preload';
 import Loading from './scenes/Loading';
 import MainGame from './scenes/MainGame';
-// import { SpinePlugin } from '@esotericsoftware/phaser-spine-plugin';
 import data from './data/gameData';
+import * as spine from "@esotericsoftware/spine-phaser-v3"
 
 const gameConfig: Phaser.Types.Core.GameConfig = {
   type: Phaser.WEBGL,
@@ -22,11 +22,11 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
   },
   backgroundColor: '#1a1a1a',
   scene: [Preload, Loading, MainGame],
-//   plugins: {
-//     global: [
-//         { key: 'SpinePlugin', plugin: SpinePlugin, start: true }
-//     ],
-//   },
+  plugins: {
+    scene: [
+        { key: "spine.SpinePlugin", plugin: spine.SpinePlugin, mapping: "spine" }
+    ]
+  }
 };
 
 export default gameConfig;

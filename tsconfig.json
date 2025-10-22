@@ -11,8 +11,8 @@
     "preserveConstEnums": true,
     "outDir": "dist",
     "skipLibCheck": true,
-    "resolveJsonModule": true,
+    "resolveJsonModule": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/types/**/*"],
   "compileOnSave": true
 }

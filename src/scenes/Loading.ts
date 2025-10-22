@@ -9,6 +9,9 @@ export default class LoadingScene extends Phaser.Scene {
   }
 
   preload() {
+
+    console.log(this)
+
     this._draw();
 
     this._initializeLoadingEvents()
@@ -24,22 +27,12 @@ export default class LoadingScene extends Phaser.Scene {
     this.load.image('soundOn', 'images/sound_on.png'); 
     this.load.image('soundOff', 'images/sound_off.png'); 
 
-
-    // // Audio
-    // // IMPORTANT: You need to find these assets and place them in /src/assets/audio
     this.load.audio('bg_music', 'audio/bg_music.mp3');
     this.load.audio('spin', 'audio/spin.wav');
     this.load.audio('win', 'audio/win.wav');
 
-    // Spine Animation
-    // Get files from: https://github.com/yandeu/phaser3-spine-example/tree/master/public/assets/spine
-    // Place them in /src/assets/spine
-    // this.load.spine(
-    //   'goblin',
-    //   'assets/spine/goblin-ess.json',
-    //   'assets/spine/goblin.atlas',
-    //   false
-    // );
+    this.load.spineBinary("spineboy-data", "/spine/spineboy-pro.skel");
+    this.load.spineAtlas("spineboy-atlas", "/spine/spineboy-pma.atlas");
   }
 
   private _draw() {

@@ -4,6 +4,7 @@ import Board from '../components/Board';
 import ControlPanel from '../components/ControlPanel';
 import Button from '../components/Button';
 import AudioManager from '../utils/AudioManager';
+import { SpineGameObject } from '@esotericsoftware/spine-phaser-v3';
 
 export default class MainGameScene extends Phaser.Scene {
   private _container!: Phaser.GameObjects.Container;
@@ -12,12 +13,13 @@ export default class MainGameScene extends Phaser.Scene {
   private _board!: Board
   private _controlPanel!: ControlPanel
 
+  private _spineBoy!: SpineGameObject;
+
   constructor() {
     super('MainGameScene');
   }
 
   create() {
-
     data.audioManager = new AudioManager(this)
     data.audioManager.bgMusic.play()
 
@@ -29,13 +31,32 @@ export default class MainGameScene extends Phaser.Scene {
     this._background.setScale(scale)
     this._container.add(this._background)
 
-    this._board = new Board(this, data.gameWidth/2, data.gameHeight/2)
+    this._board = new Board(this, data.gameWidth/2, data.gameHeight/2 - 80)
+      .onFinish(() => {
+        this._controlPanel.finish()
+      })
+      .onWin(() => {
+        data.audioManager.win.play()
+        this._spineBoy.animationState.setAnimation(0, "jump")
+        this._spineBoy.animationState.addAnimation(0, 'walk', true, 0);
+      })
+      .onLoss(() => {
+        this._spineBoy.animationState.setAnimation(0, "death")
+        this._spineBoy.animationState.addAnimation(0, 'walk', true, 0);
+      })
     this._container.add(this._board)
 
-    this._controlPanel = new ControlPanel(this, 0, -20)
+    this._controlPanel = new ControlPanel(this, 0, 40)
       .onPlay(() => {
+        data.audioManager.win.isPlaying && data.audioManager.win.stop()
         this._board.play()
+        this._spineBoy.animationState.setAnimation(0, "walk", true);
       })
     this._container.add(this._controlPanel)
+
+    this._spineBoy = this.add.spine(data.gameWidth/2 + 300, data.gameHeight/2 + 200, 'spineboy-data', "spineboy-atlas") as SpineGameObject
+    this._spineBoy.setScale(.2)
+    this._spineBoy.animationState.setAnimation(0, "walk", true);
+    this._container.add(this._spineBoy)
   }
 }

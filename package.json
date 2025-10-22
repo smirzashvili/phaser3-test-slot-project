@@ -10,8 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@esotericsoftware/spine-phaser-v3": "~4.2.77",
     "gsap": "^3.13.0",
-    "phaser": "^3.90.0"
+    "phaser": "^3.60.0"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
