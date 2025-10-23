@@ -1,6 +1,5 @@
 import data from '../data/gameData';
 import Reel from './Reel';
-import { Symbols, SymbolNames } from '../enums/Enums';
 
 export default class Board extends Phaser.GameObjects.Container {
     private _scene: Phaser.Scene;
@@ -38,8 +37,8 @@ export default class Board extends Phaser.GameObjects.Container {
             this._reels.push(reel)
             this._maskContainer.add(reel)
 
-            const randomTexture: string = Phaser.Math.RND.pick(SymbolNames);
-            reel.fillWithDefaults(randomTexture);
+            const starterIndex: number = data.starterSymbolsData[i]
+            reel.fillWithDefaults(starterIndex);
 
             if(i === data.reelsAmount - 1) {
                 this._reels[i].onFinish(() => {

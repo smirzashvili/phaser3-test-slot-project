@@ -6,6 +6,7 @@ export default {
     isWebpSupported: false,
     soundVolume: 100,
     reelsAmount: 3,
+    starterSymbolsData: [0,1,2]
 } as {
     gameWidth: number,
     gameHeight: number,
@@ -13,4 +14,5 @@ export default {
     soundVolume: number,
     audioManager: AudioManager,
     reelsAmount: number
+    starterSymbolsData: Array<number>
 }
