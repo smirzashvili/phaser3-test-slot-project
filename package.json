@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "start:docker": "docker run -p 8080:80 phaser-slot-game",
+    "build:docker": "docker build -t phaser-slot-game ."
   },
   "author": "",
   "license": "ISC",
