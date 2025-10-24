@@ -64,4 +64,11 @@ docker run -p 8080:80 phaser-slot-game
 
 ## Time Spent
 
-* Approximate implementation time: **8–12 hours**.
+* Set up project & generate all of the assets/audios using ai: **1.5 hours**.
+* Set up file structure: **1 hours**.
+* Integrate spine: **1 hours** (because of version conflicts).
+* Develop Core Game Logic: **2 hours**.
+* Containerize using Docker: **1 hours** (because had not experience of it).
+* Refactoring: **0.5 hours**.
+
+* So to sum up: approximately **7 hours**
