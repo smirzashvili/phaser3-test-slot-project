@@ -4,36 +4,6 @@ A simple 3-reel, 1-row slot game implemented with **Phaser 3**, **TypeScript**, 
 
 ---
 
-## Game Features
-
-- **Preload screen** with progress bar while assets load.
-- **Main game scene** with:
-  - Background image.
-  - Reels frame and symbols.
-  - Spin button.
-  - Spine animated object (example: goblin animation).
-- **Gameplay:**
-  - 3 reels, 1 row, 3 different symbols.
-  - Clicking **Spin** starts the reels spinning.
-  - Mock server response for spin results (randomized).
-  - **Win condition:** all 3 symbols match → triggers win sound and Spine animation.
-- **Other features:**
-  - Background sound loop.
-  - Sound control toggle (on/off).
-  - GSAP animations for spinning, bouncing, and other effects.
-
----
-
-## Tech Stack
-
-- [Phaser 3](https://phaser.io/) – Game engine.
-- [TypeScript](https://www.typescriptlang.org/) – Programming language.
-- [GSAP](https://greensock.com/gsap/) – Animations.
-- [Webpack](https://webpack.js.org/) – Bundling & development server.
-- [Spine](http://esotericsoftware.com/) – Character animations.
-
----
-
 ## Installation & Running Locally
 
 1. **Clone the repository**
@@ -72,26 +42,9 @@ npm run build
 
 ---
 
-## Implementation Notes
-
-- Spin results are **mocked/randomized** to simulate a server response.
-- Reels spin using **GSAP tweens** for smooth motion.
-- Only **3 symbols** are used for simplicity.
-- The game includes a **single row** (can be extended in the future).
-- Sound and animation controls are fully integrated.
-- GSAP is used for both reel spinning and bounce animations after stopping.
-
----
-
 ## Time Spent
 
 - Approximate implementation time: **8–12 hours**.
-
----
-
-## Repository URL
-
-[https://github.com/your-username/phaser3-slot-game](https://github.com/your-username/phaser3-slot-game)
 
 ---
 
