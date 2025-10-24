@@ -26,7 +26,7 @@ export default class AudioManager {
         this.win = this._scene.sound.add("win")
     }
 
-    public _changeVolumeWithFade(target: Phaser.Sound.BaseSound, fadeDuration: number, toVolume: number): void {
+    private _changeVolumeWithFade(target: Phaser.Sound.BaseSound, fadeDuration: number, toVolume: number): void {
         gsap.to(target, { volume: toVolume, duration: fadeDuration / 1000 });
     }
 
@@ -39,21 +39,5 @@ export default class AudioManager {
 
     public getMute() {
         return this._scene.sound.mute
-    }
-
-    public play() {
-
-    }
-
-    public finish(isInstant?: boolean) {
-
-    }
-
-    public playWinMusic() {
-        
-    }
-
-    public stopWinMusic(audio: Phaser.Sound.BaseSound) {
-
     }
 }

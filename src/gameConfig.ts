@@ -10,9 +10,10 @@ const gameConfig: Phaser.Types.Core.GameConfig = {
   parent: 'game',
   width: data.gameWidth,
   height: data.gameHeight,
-  // scale: {
-  //   mode: Phaser.Scale.FIT,
-  // },
+  scale: {
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+  },
   antialiasGL: false,
   physics: {
     default: 'none',

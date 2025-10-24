@@ -2,17 +2,14 @@ import Phaser from 'phaser';
 import data from '../data/gameData';
 import Board from '../components/Board';
 import ControlPanel from '../components/ControlPanel';
-import Button from '../components/Button';
 import AudioManager from '../utils/AudioManager';
 import { SpineGameObject } from '@esotericsoftware/spine-phaser-v3';
 
 export default class MainGameScene extends Phaser.Scene {
   private _container!: Phaser.GameObjects.Container;
-
   private _background!: Phaser.GameObjects.Image;
-  private _board!: Board
+  private _board!: Board;
   private _controlPanel!: ControlPanel
-
   private _spineBoy!: SpineGameObject;
 
   constructor() {
@@ -25,8 +22,7 @@ export default class MainGameScene extends Phaser.Scene {
 
     this._container = this.add.container(0, 0);
 
-    this._background = this.add.image(data.gameWidth / 2, data.gameHeight / 2, 'background')
-      .setOrigin(0.5,0.5)
+    this._background = this.add.image(data.gameWidth / 2, data.gameHeight / 2, 'background').setOrigin(0.5,0.5)
     const scale = Math.max(data.gameWidth / this._background.width, data.gameHeight / this._background.height)
     this._background.setScale(scale)
     this._container.add(this._background)

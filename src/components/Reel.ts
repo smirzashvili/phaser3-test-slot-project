@@ -7,7 +7,6 @@ export default class Reel extends Phaser.GameObjects.Container {
     private _scene: Phaser.Scene;
     private _symbols: Array<Symbol> = [];
 
-    private _spinTween?: gsap.core.Tween;
     private _symbolHeight = 170;
     private _spinCurrentSymbolsAmount = 0;
     private _spinSymbolsAmount = 10;
@@ -25,7 +24,7 @@ export default class Reel extends Phaser.GameObjects.Container {
         const totalDistance = this._symbolHeight * this._spinSymbolsAmount;
         this._spinFinalResult = finalResult;
 
-        this._spinTween = gsap.to(this, {
+        gsap.to(this, {
             y: this.y + totalDistance,
             duration: duration,
             ease: "linear",
@@ -37,7 +36,7 @@ export default class Reel extends Phaser.GameObjects.Container {
 
     private _generateTopSymbol() {
         const randomTexture = Phaser.Math.RND.pick(SymbolNames);
-        const newSymbol = new Symbol(this._scene, 0, this._symbols[0].y - this._symbolHeight, randomTexture)
+        const newSymbol = new Symbol(this._scene, 0, this._symbols[0].y - this._symbolHeight, 'images', randomTexture)
             .setScale(0.5);
         this.add(newSymbol);
         this._symbols.unshift(newSymbol);
@@ -60,7 +59,7 @@ export default class Reel extends Phaser.GameObjects.Container {
             } else {
                 texture = SymbolNames[this._spinFinalResult]
             }
-            bottom.setTexture(texture);
+            bottom.setFrame(texture);
 
             this._symbols = [bottom, top];
         }
@@ -83,7 +82,7 @@ export default class Reel extends Phaser.GameObjects.Container {
     }
 
     public fillWithDefaults(randomIndex: number) {
-        const symbol = new Symbol(this._scene, 0, 0, SymbolNames[randomIndex]).setScale(0.5);
+        const symbol = new Symbol(this._scene, 0, 0, 'images', SymbolNames[randomIndex]).setScale(0.5);
         this.add(symbol);
         this._symbols.push(symbol);
     }

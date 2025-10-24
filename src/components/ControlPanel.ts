@@ -3,7 +3,6 @@ import Button from '../components/Button';
 
 export default class ControlPanel extends Phaser.GameObjects.Container {
     private _scene: Phaser.Scene;
-    // private _reels!: Reel[];
     private _spinButton!: Button;
     private _soundButton!: Button;
 
@@ -18,7 +17,7 @@ export default class ControlPanel extends Phaser.GameObjects.Container {
     }
 
     private _draw() {
-        this._spinButton = new Button(this._scene, data.gameWidth / 2, data.gameHeight / 2 + 130, {defaultFrame: 'spinButton'})
+        this._spinButton = new Button(this._scene, data.gameWidth / 2, data.gameHeight / 2 + 130, 'images', {defaultFrame: 'spin'})
             .setOrigin(0.5,0.5)
             .setScale(0.5)
             .onClick(() => {
@@ -26,7 +25,7 @@ export default class ControlPanel extends Phaser.GameObjects.Container {
             })
         this.add(this._spinButton)
             
-        this._soundButton = new Button(this._scene, data.gameWidth / 2 - 300, data.gameHeight / 2 + 130, {defaultFrame: 'soundOn', disableFrame: 'soundOff'})
+        this._soundButton = new Button(this._scene, data.gameWidth / 2 - 300, data.gameHeight / 2 + 130, 'images', {defaultFrame: 'sound_on', disableFrame: 'sound_off'})
             .setOrigin(0.5,0.5)
             .setScale(1)
             .onClick(() => {

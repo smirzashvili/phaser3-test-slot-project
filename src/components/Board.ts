@@ -23,7 +23,7 @@ export default class Board extends Phaser.GameObjects.Container {
     }
 
     private _draw() {
-        this._board = this._scene.add.image(0, 0, 'board')
+        this._board = this._scene.add.sprite(0, 0, 'images', 'board')
         this._board.setDisplaySize(data.gameWidth/1.2, this._board.height * (data.gameWidth/1.2 * 1/this._board.width))
         this.add(this._board);
 

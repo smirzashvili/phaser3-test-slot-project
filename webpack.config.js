@@ -45,7 +45,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({ template: 'public/index.html' }),
     new CopyPlugin({
-      patterns: [{ from: 'src/assets', to: 'assets' }]
+      patterns: [
+        { from: 'src/assets', to: 'assets' },
+        { from: 'public/favicon.ico', to: '' }
+      ]
     }),
     new CleanWebpackPlugin(),
     new webpack.HotModuleReplacementPlugin(),
