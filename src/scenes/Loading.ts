@@ -45,7 +45,7 @@ export default class LoadingScene extends Phaser.Scene {
 
     const progressBox: Phaser.GameObjects.Graphics = this.add.graphics()
       .fillStyle(0x222222, 0.8)
-      .fillRect(width / 2 - 160, height / 2 - 20, 320, 50);
+      .fillRect(250, 280, 300, 30);
     this._container.add(progressBox);
 
     this._progressBar = this.add.graphics()
