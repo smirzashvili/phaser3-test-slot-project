@@ -71,4 +71,4 @@ docker run -p 8080:80 phaser-slot-game
 * Containerize using Docker: **1 hours** (because had not experience of it).
 * Refactoring: **0.5 hours**.
 
-* So to sum up: approximately **7 hours**
+* SO TO SUM UP: approximately **7 hours**
