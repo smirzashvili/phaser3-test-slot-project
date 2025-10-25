@@ -1,18 +1,13 @@
-import AudioManager from "../utils/AudioManager"
+import type { GameData } from "../types/game"
 
-export default {
+const data: GameData = {
     gameWidth: 800,
     gameHeight: 600,
-    isWebpSupported: false,
-    soundVolume: 100,
     reelsAmount: 3,
-    starterSymbolsData: [0,1,2]
-} as {
-    gameWidth: number,
-    gameHeight: number,
-    isWebpSupported: boolean,
-    soundVolume: number,
-    audioManager: AudioManager,
-    reelsAmount: number
-    starterSymbolsData: Array<number>
+    starterSymbolsData: [0,1,2],
+    soundVolume: 100,
+    audioManager: null,
+    isWebpSupported: false,
 }
+
+export default data

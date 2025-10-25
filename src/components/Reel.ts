@@ -1,7 +1,7 @@
 import data from '../data/gameData';
 import Symbol from './Symbol';
 import gsap from 'gsap';
-import { SymbolNames } from '../enums/Enums';
+import { SymbolNames } from '../types/enums';
 
 export default class Reel extends Phaser.GameObjects.Container {
     private _scene: Phaser.Scene;

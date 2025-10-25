@@ -1,11 +1,10 @@
+import type { ButtonFrames } from "../types/game";
+
 export default class Button extends Phaser.GameObjects.Sprite {
     private _scene: Phaser.Scene;
-    private _frames: {
-        defaultFrame: string;
-        disableFrame?: string;
-    }
+    private _frames: ButtonFrames
 
-    constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frames: {defaultFrame: string, disableFrame?: string}) {
+    constructor(scene: Phaser.Scene, x: number, y: number, texture: string, frames: ButtonFrames) {
         super(scene, x, y, texture, frames.defaultFrame)
 
         this._scene = scene;

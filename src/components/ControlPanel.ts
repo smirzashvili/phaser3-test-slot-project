@@ -1,12 +1,13 @@
 import data from '../data/gameData';
 import Button from '../components/Button';
+import type { ControlPanelCallbacks } from '../types/game';
 
 export default class ControlPanel extends Phaser.GameObjects.Container {
     private _scene: Phaser.Scene;
     private _spinButton!: Button;
     private _soundButton!: Button;
 
-    private _onPlay!: () => void;
+    private _onPlay!: ControlPanelCallbacks['onPlay'];
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
         super(scene, x, y);
@@ -55,7 +56,7 @@ export default class ControlPanel extends Phaser.GameObjects.Container {
         this._spinButton.enable()
     }
 
-    public onPlay(callback: () => void) {
+    public onPlay(callback: ControlPanelCallbacks['onPlay']) {
         this._onPlay = callback
         return this;
     }

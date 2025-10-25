@@ -1,5 +1,6 @@
 import data from '../data/gameData';
 import Reel from './Reel';
+import type { SpinResult, BoardCallbacks } from '../types/game';
 
 export default class Board extends Phaser.GameObjects.Container {
     private _scene: Phaser.Scene;
@@ -12,7 +13,7 @@ export default class Board extends Phaser.GameObjects.Container {
     private _isWin!: boolean;
 
 
-    private _onFinish!: (isWin: boolean) => void;
+    private _onFinish!: BoardCallbacks['onFinish'];
 
     constructor(scene: Phaser.Scene, x: number, y: number) {
         super(scene, x, y);
@@ -63,7 +64,7 @@ export default class Board extends Phaser.GameObjects.Container {
     }
 
     public async play() {
-        const result = await this.mockServerSpin();
+        const result: SpinResult = await this.mockServerSpin();
         this._isWin = new Set(result).size === 1;
         
         const durationPerReel = [1.2, 1.4, 1.6]
@@ -83,7 +84,7 @@ export default class Board extends Phaser.GameObjects.Container {
         });
     }
 
-    public onFinish(callback: (isWin:boolean) => void) {
+    public onFinish(callback: BoardCallbacks['onFinish']) {
         this._onFinish = (isWin: boolean) => {
             callback(isWin)
         }
